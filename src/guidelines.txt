@@ -1,0 +1,95 @@
+### **Roadmap for the Simple Banking Application**
+
+#### **Phase 1: Project Setup**
+
+1. **Set Up Development Environment**:
+   - Install Java Development Kit (JDK).
+   - Set up an IDE or text editor (e.g., IntelliJ IDEA, Eclipse, or VS Code).
+   - Create a new Java project and add a `Main` class as the entry point.
+
+2. **Define Project Structure**:
+   - Create initial classes: `Main`, `User`, `BankAccount`.
+
+#### **Phase 2: Core Classes and Attributes**
+
+1. **Create `BankAccount` Class**:
+   - **Attributes**: `accountId`, `balance`.
+   - **Methods**:
+     - `deposit(amount)`: Adds funds to the account balance.
+     - `withdraw(amount)`: Deducts funds if balance allows.
+     - `getBalance()`: Returns the current balance.
+     - `displayAccountInfo()`: Displays account details.
+
+2. **Create `User` Class**:
+   - **Attributes**: `userId`, `name`, `account`, `isAdmin`, `hasFullAccess`, `transactionCount`.
+   - **Methods**:
+     - `login(userId)`: Verifies user login.
+     - `createAccount(initialBalance)`: Associates a new `BankAccount` with the user.
+     - `canPerformTransaction()`: Checks transaction count for limited-access users.
+     - `resetTransactionCount()`: Resets the transaction count upon admin approval.
+
+3. **Update `Main` Class for Account and User Management**:
+   - **Attributes**: `users` (collection of `User` objects).
+   - **Methods**:
+     - `createUser(name, isAdmin, hasFullAccess, initialBalance)`: Creates a `User` and an associated `BankAccount`.
+     - `findUser(userId)`: Finds a user by ID.
+     - `mainMenu()`: Displays options based on user type (admin or standard).
+
+#### **Phase 3: Implement Core Functionalities**
+
+1. **User Login**:
+   - Implement `login()` in `Main` to authenticate users and grant access based on user roles.
+   - Update the `mainMenu()` method to only display options to logged-in users.
+
+2. **Account Creation**:
+   - Integrate `createUser()` in `Main` for new users, assigning them an initial balance and creating their `BankAccount`.
+   - Admins can register other users, specifying whether they have full or limited access.
+
+3. **Transaction Management**:
+   - **Deposit**:
+     - Create `performDeposit(userId, amount)` in `Main` to allow deposits.
+   - **Withdraw**:
+     - Implement `performWithdrawal(userId, amount)` in `Main`, checking balance and, if applicable, transaction limits.
+   - **Balance Inquiry**:
+     - Implement `checkBalance(userId)` to fetch and display balance information for the logged-in user.
+   - **Transaction Restrictions**:
+     - Update the `canPerformTransaction()` method in `User` to check and increment transaction count.
+     - Create a mechanism for limited users to request admin approval if they exceed three transactions.
+
+4. **Admin Permissions**:
+   - Add functionality in `Main` for admin users to access all accounts.
+   - Enable admins to approve transactions for limited-access users.
+
+#### **Phase 4: User Interface and Workflow**
+
+1. **Main Menu and Navigation**:
+   - Implement `mainMenu()` to display different options based on whether the logged-in user is an admin or a standard user.
+   - Build submenus to guide users through different actions (e.g., deposits, withdrawals, balance checks).
+
+2. **Input Handling and Validation**:
+   - Use the `Scanner` class to handle user input.
+   - Validate numeric inputs for amounts and user IDs.
+   - Handle potential errors (e.g., insufficient funds, invalid user ID).
+
+#### **Phase 5: Testing and Debugging**
+
+1. **Test Each Feature Individually**:
+   - Test account creation, deposits, withdrawals, balance inquiries, and login for both standard and admin users.
+   - Verify that transaction limits work correctly for limited-access users.
+   - Ensure admins can approve transactions as expected.
+
+2. **Edge Case Testing**:
+   - Test for invalid inputs, such as entering negative numbers for amounts, incorrect user IDs, and edge cases for transaction limits.
+
+#### **Phase 6: Final Enhancements (Optional)**
+
+1. **Data Persistence**:
+   - Optionally, add basic file storage to save user data between sessions.
+   - Alternatively, add database integration with Oracle or another DBMS for permanent data storage.
+
+2. **Error Handling and Logging**:
+   - Improve error messages and add logging to track user actions and errors.
+
+3. **Documentation and Comments**:
+   - Document each class and method to make the code easier to understand and maintain.
+
