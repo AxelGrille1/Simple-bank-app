@@ -64,6 +64,7 @@ public class User {
         }
     }
 
+    // Default method to view the user's own account
     public void viewAccount() {
         if (isLogged) {
             account.displayTransactionHistory();
@@ -71,6 +72,21 @@ public class User {
             System.out.println("Please login first.");
         }
     }
+
+    // Overloaded method to view any account if the user is an admin
+    public void viewAccount(BankAccount accountToView) {
+        if (isAdmin) {
+            if (this.isAdmin() || accountToView.getAccountId() == this.account.getAccountId()) {
+                accountToView.displayTransactionHistory();
+            } else {
+                System.out.println("You need admin rights to view other accounts.");
+            }
+        } else {
+            System.out.println("Please login first.");
+        }
+    }
+
+
 
     public boolean sendMoney(double amount, BankAccount recipientAccount, String recipientName, Admin admin) {
         if (!isLogged) {

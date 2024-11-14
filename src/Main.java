@@ -27,10 +27,14 @@ public class Main {
 
         // Admin approves transaction if limit exceeded
         user1.login(1); // Alice logs back in
+        user1.viewAccount();
+        System.out.println(user1.getName() + " " + user1.isLoggedIn());
+        System.out.println(user2.getName() + " " + user2.isLoggedIn());
+
         System.out.println("\nUser1 (Alice) sends 3000 to User2 (Bob) after exceeding limit:");
         user1.sendMoney(3000, user2.getAccount(), user2.getName(), admin);
 
         // View Bob's account after approval
-        user2.viewAccount();
+        admin.viewAccount(user2.getAccount());
     }
 }

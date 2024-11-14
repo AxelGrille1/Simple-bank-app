@@ -46,6 +46,7 @@ public class BankAccount {
 
     public void displayTransactionHistory() {
         System.out.println("Transaction History for Account ID: " + accountId);
+        System.out.println("Balance: " + getBalance());
         for (Transaction transaction : transactionHistory) {
             System.out.println(transaction.getDescription() + ": " + transaction.getAmount());
         }
